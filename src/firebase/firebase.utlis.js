@@ -1,6 +1,18 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup,createUserWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc,onSnapshot } from "firebase/firestore";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "firebase/auth";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  onSnapshot,
+} from "firebase/firestore";
 import firebaseConfig from "./firebaseConfig";
 
 // Initialize Firebase
@@ -45,7 +57,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   }
 };
 
-  
 export const createUser = async (email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -65,9 +76,5 @@ export const createUser = async (email, password) => {
     // Handle errors (display message, log details)
   }
 };
-
-
-
-
 
 export default firebaseApp;
