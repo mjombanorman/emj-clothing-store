@@ -5,7 +5,7 @@ import "./App.css";
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import { auth } from './firebase/firebase.utlis';
+import { auth,createUserProfileDocument } from './firebase/firebase.utlis';
 //import { auth } from "./firebase/firebase.utils";
 
 class App extends Component {
@@ -17,14 +17,26 @@ class App extends Component {
   }
 
   unSubscribeFromAuth = null;
-
-  componentDidMount() { 
-  this.unSubscribeFromAuth =  auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user });
-      console.log(user);
+  componentDidMount() {
+    this.unSubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        try {
+          const userRef = await createUserProfileDocument(userAuth);
+          console.log("useref", userRef);
+          
+          // await  userRef.onSnapshot((snapShot) => {
+            this.setState({
+              currentUser:  userRef.id })
+            // });
+          // });
+        } catch (error) {
+          console.error("Error in onSnapshot:", error);
+        }
+      }
+      this.setState({ currentUser: userAuth });
     });
-    
   }
+
   componentWillUnmount() {
     this.unSubscribeFromAuth(); // unsubscribe from the auth listener when the component unmounts
     console.log("unmounted");
