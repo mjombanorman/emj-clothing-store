@@ -4,6 +4,7 @@ const cartActionTypes = {
   CLEAR_CART: "CLEAR_CART",
   TOGGLE_CART_HIDDEN: "TOGGLE_CART_HIDDEN",
   COUNT_CART_TOTALS: "COUNT_CART_TOTALS",
+  CLEAR_ITEM_FROM_CART: "CLEAR_ITEM_FROM_CART",
 };
 
 export default cartActionTypes;
