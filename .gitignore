@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+firebase.json
+vite.config.js
+.firebase
+.firebaserc
+.eslint.cjs
