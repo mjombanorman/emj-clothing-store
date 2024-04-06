@@ -27,3 +27,4 @@ vite.config.js
 .firebase
 .firebaserc
 .eslint.cjs
+public
