@@ -1,4 +1,3 @@
-
 import CollectionPreview from "../../components/preview-collection/collection-preview.component";
 import { selectCollections } from "../../redux/shop/shop.selectors";
 import { createStructuredSelector } from "reselect";
